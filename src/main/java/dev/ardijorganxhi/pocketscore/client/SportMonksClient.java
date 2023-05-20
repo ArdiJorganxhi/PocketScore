@@ -1,13 +1,12 @@
 package dev.ardijorganxhi.pocketscore.client;
 
 
-import dev.ardijorganxhi.pocketscore.model.sportmonks.response.ScoreResponse;
-import dev.ardijorganxhi.pocketscore.model.sportmonks.response.StandingsResponse;
-import dev.ardijorganxhi.pocketscore.model.sportmonks.response.TeamResponse;
+import dev.ardijorganxhi.pocketscore.model.sportmonks.response.*;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestHeader;
+
+import java.util.List;
 
 @FeignClient(value = "sportmonksclient", url = "https://api.sportmonks.com/v3/football")
 public interface SportMonksClient {
@@ -20,7 +19,16 @@ public interface SportMonksClient {
     @GetMapping("/teams/search/{team}?api_token=${token}&include=trophies;players;")
     TeamResponse getTeam(@PathVariable String team);
 
-    @GetMapping("/fixtures/multi/{teams}?api_token=${token}&include=")
-    String getFavTeamsFixture(@PathVariable String teams);
+    @GetMapping("/fixtures/multi/{teams}?api_token=${token}")
+    ScoreResponse getFavTeamsFixture(@PathVariable String teams);
+
+    @GetMapping("/transfers?api_token=${token}")
+    ListTransferResponse getAllTransfers();
+
+    @GetMapping("/transfers/{transferId}?api_token=${token}")
+    TransferResponse getTransferById(@PathVariable Long transferId);
+
+    @GetMapping("//transfers/teams/{team}?api_token=${token}")
+    ListTransferResponse getTransferByTeams(@PathVariable String team);
 
 }

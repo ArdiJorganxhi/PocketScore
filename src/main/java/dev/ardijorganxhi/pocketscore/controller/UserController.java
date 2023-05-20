@@ -2,6 +2,7 @@ package dev.ardijorganxhi.pocketscore.controller;
 
 import dev.ardijorganxhi.pocketscore.client.SportMonksClient;
 import dev.ardijorganxhi.pocketscore.model.dto.UserDto;
+import dev.ardijorganxhi.pocketscore.model.sportmonks.response.ScoreResponse;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.response.TeamResponse;
 import dev.ardijorganxhi.pocketscore.service.FavoriteTeamService;
 import dev.ardijorganxhi.pocketscore.service.UserService;
@@ -45,7 +46,7 @@ public class UserController {
     }
 
     @GetMapping("/favourite-team/fixtures")
-    public ResponseEntity<String> getFavTeamsFixtures() {
+    public ResponseEntity<ScoreResponse> getFavTeamsFixtures() {
         return ResponseEntity.ok(favoriteTeamService.getFavoriteTeams(Long.valueOf(MDC.get(X_USER_ID))));
     }
 }

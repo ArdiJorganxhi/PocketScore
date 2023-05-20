@@ -1,11 +1,11 @@
 package dev.ardijorganxhi.pocketscore.service;
 
 import dev.ardijorganxhi.pocketscore.client.SportMonksClient;
-import dev.ardijorganxhi.pocketscore.model.sportmonks.response.ScoreResponse;
-import dev.ardijorganxhi.pocketscore.model.sportmonks.response.StandingsResponse;
-import dev.ardijorganxhi.pocketscore.model.sportmonks.response.TeamResponse;
+import dev.ardijorganxhi.pocketscore.model.sportmonks.response.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -23,5 +23,17 @@ public class SportMonksService {
 
     public StandingsResponse getStandings(Long leagueId) {
         return sportMonksClient.getStandings(leagueId);
+    }
+
+    public ListTransferResponse getTransfers() {
+        return sportMonksClient.getAllTransfers();
+    }
+
+    public TransferResponse getTransferById(Long transferId) {
+        return sportMonksClient.getTransferById(transferId);
+    }
+
+    public ListTransferResponse getTransferByTeam(String team) {
+        return sportMonksClient.getTransferByTeams(team);
     }
 }

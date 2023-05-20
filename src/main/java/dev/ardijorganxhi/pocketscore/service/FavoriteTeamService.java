@@ -3,6 +3,7 @@ package dev.ardijorganxhi.pocketscore.service;
 import dev.ardijorganxhi.pocketscore.client.SportMonksClient;
 import dev.ardijorganxhi.pocketscore.entity.FavoriteTeam;
 import dev.ardijorganxhi.pocketscore.mapper.UserMapper;
+import dev.ardijorganxhi.pocketscore.model.sportmonks.response.ScoreResponse;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.response.TeamResponse;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.team.Team;
 import dev.ardijorganxhi.pocketscore.repository.FavoriteTeamRepository;
@@ -32,7 +33,7 @@ public class FavoriteTeamService {
         return sportMonksClient.getTeam(favoriteTeam.getTeamName());
     }
 
-    public String getFavoriteTeams(Long userId) {
+    public ScoreResponse getFavoriteTeams(Long userId) {
         final List<FavoriteTeam> favoriteTeams = favoriteTeamRepository.findByUserId(userId);
         final List<Integer> teamsId = favoriteTeams.stream().map(FavoriteTeam::getId).toList();
         final String teams = StringUtils.collectionToDelimitedString(teamsId, ",");
