@@ -8,7 +8,10 @@ import dev.ardijorganxhi.pocketscore.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.MDC;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 import static dev.ardijorganxhi.pocketscore.utils.MdcConstant.X_USER_ID;
 
@@ -33,8 +36,16 @@ public class UserController {
 
     @PostMapping("/favourite-team/{team}")
     public void addFavouriteTeam(@PathVariable String team) {
-        TeamResponse response = sportMonksClient.getTeam(team);
-        favoriteTeamService.addFavoriteTeam(response.getTeam().get(0), Long.valueOf(MDC.get(X_USER_ID)));
+        favoriteTeamService.addFavoriteTeam(team, Long.valueOf(MDC.get(X_USER_ID)));
+    }
 
+    @GetMapping("/favourite-team/{id}")
+    public ResponseEntity<TeamResponse> getFavouriteTeamInfo(@PathVariable Integer id) {
+        return ResponseEntity.ok(favoriteTeamService.getFavoriteTeamInfo(id, Long.valueOf(MDC.get(X_USER_ID))));
+    }
+
+    @GetMapping("/favourite-team/fixtures")
+    public ResponseEntity<String> getFavTeamsFixtures() {
+        return ResponseEntity.ok(favoriteTeamService.getFavoriteTeams(Long.valueOf(MDC.get(X_USER_ID))));
     }
 }

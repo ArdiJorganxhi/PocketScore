@@ -2,6 +2,7 @@ package dev.ardijorganxhi.pocketscore.controller;
 
 import dev.ardijorganxhi.pocketscore.client.SportMonksClient;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.response.StandingsResponse;
+import dev.ardijorganxhi.pocketscore.service.SportMonksService;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,10 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class StandingsController {
 
-    private final SportMonksClient sportMonksClient;
+    private final SportMonksService sportMonksService;
 
-    @GetMapping("/{leagueId}")
-    public ResponseEntity<StandingsResponse> getLeagueStandings(@PathVariable Long leagueId) {
-        return ResponseEntity.ok(sportMonksClient.getStandings(leagueId));
-    }
+
 }

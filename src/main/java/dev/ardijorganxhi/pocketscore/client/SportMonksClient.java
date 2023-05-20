@@ -20,4 +20,7 @@ public interface SportMonksClient {
     @GetMapping("/teams/search/{team}?api_token=${token}&include=trophies;players;")
     TeamResponse getTeam(@PathVariable String team);
 
+    @GetMapping("/fixtures/multi/{teams}?api_token=${token}&include=")
+    String getFavTeamsFixture(@PathVariable String teams);
+
 }
