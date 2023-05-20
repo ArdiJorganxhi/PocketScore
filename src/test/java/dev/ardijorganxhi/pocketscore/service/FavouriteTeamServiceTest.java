@@ -3,8 +3,7 @@ package dev.ardijorganxhi.pocketscore.service;
 import dev.ardijorganxhi.pocketscore.client.SportMonksClient;
 import dev.ardijorganxhi.pocketscore.entity.FavoriteTeam;
 import dev.ardijorganxhi.pocketscore.mapper.UserMapper;
-import dev.ardijorganxhi.pocketscore.model.sportmonks.response.ScoreResponse;
-import dev.ardijorganxhi.pocketscore.model.sportmonks.response.TeamResponse;
+import dev.ardijorganxhi.pocketscore.model.sportmonks.response.ListBaseResponse;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.scores.Fixture;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.team.Team;
 import dev.ardijorganxhi.pocketscore.repository.FavoriteTeamRepository;
@@ -53,8 +52,8 @@ public class FavouriteTeamServiceTest {
 
         List<Team> teams = Collections.singletonList(team);
 
-        TeamResponse teamResponse = TeamResponse.builder()
-                .team(teams)
+        ListBaseResponse<Team> teamResponse = ListBaseResponse.<Team>builder()
+                .list(teams)
                 .build();
 
         when(sportMonksClient.getTeam(teamName)).thenReturn(teamResponse);
@@ -68,7 +67,7 @@ public class FavouriteTeamServiceTest {
         favoriteTeamService.addFavoriteTeam(teamName, userId);
 
         verify(sportMonksClient).getTeam(teamName);
-        verify(userMapper).addFavoriteTeam(teamResponse.getTeam().get(0), userId);
+        verify(userMapper).addFavoriteTeam(teamResponse.getList().get(0), userId);
         verify(favoriteTeamRepository).save(favoriteTeam);
     }
 
@@ -92,8 +91,8 @@ public class FavouriteTeamServiceTest {
 
         List<Team> teams = Collections.singletonList(team);
 
-        TeamResponse teamResponse = TeamResponse.builder()
-                .team(teams)
+        ListBaseResponse<Team> teamResponse = ListBaseResponse.<Team>builder()
+                .list(teams)
                 .build();
 
         when(sportMonksClient.getTeam(favoriteTeam.getTeamName())).thenReturn(teamResponse);
@@ -132,14 +131,14 @@ public class FavouriteTeamServiceTest {
 
         List<Fixture> fixtures = List.of(fixture, fixture2);
 
-        ScoreResponse scoreResponse = ScoreResponse.builder()
-                .data(fixtures)
+        ListBaseResponse<Fixture> scoreResponse = ListBaseResponse.<Fixture>builder()
+                .list(fixtures)
                 .build();
 
         when(favoriteTeamRepository.findByUserId(userId)).thenReturn(favoriteTeams);
         when(sportMonksClient.getFavTeamsFixture(teams)).thenReturn(scoreResponse);
 
-        ScoreResponse response = favoriteTeamService.getFavoriteTeams(userId);
+        ListBaseResponse<Fixture> response = favoriteTeamService.getFavoriteTeams(userId);
 
         verify(favoriteTeamRepository).findByUserId(userId);
         verify(sportMonksClient).getFavTeamsFixture(teams);

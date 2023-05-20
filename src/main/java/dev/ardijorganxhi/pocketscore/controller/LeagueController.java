@@ -1,10 +1,10 @@
 package dev.ardijorganxhi.pocketscore.controller;
 
-import dev.ardijorganxhi.pocketscore.client.SportMonksClient;
-import dev.ardijorganxhi.pocketscore.model.sportmonks.response.ScoreResponse;
-import dev.ardijorganxhi.pocketscore.model.sportmonks.response.StandingsResponse;
-import dev.ardijorganxhi.pocketscore.model.sportmonks.response.TeamResponse;
-import dev.ardijorganxhi.pocketscore.service.SportMonksService;
+import dev.ardijorganxhi.pocketscore.model.sportmonks.response.ListBaseResponse;
+import dev.ardijorganxhi.pocketscore.model.sportmonks.scores.Fixture;
+import dev.ardijorganxhi.pocketscore.model.sportmonks.standings.Standings;
+import dev.ardijorganxhi.pocketscore.model.sportmonks.team.Team;
+import dev.ardijorganxhi.pocketscore.service.LeagueService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,19 +17,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class LeagueController {
 
-    private final SportMonksService sportMonksService;
+    private final LeagueService leagueService;
     @GetMapping("/scores")
-    public ResponseEntity<ScoreResponse> getScores() {
-        return ResponseEntity.ok(sportMonksService.getScores());
+    public ResponseEntity<ListBaseResponse<Fixture>> getScores() {
+        return ResponseEntity.ok(leagueService.getScores());
     }
 
     @GetMapping("/teams/{team}")
-    public ResponseEntity<TeamResponse> getTeam(@PathVariable String team) {
-        return ResponseEntity.ok(sportMonksService.getTeam(team));
+    public ResponseEntity<ListBaseResponse<Team>> getTeam(@PathVariable String team) {
+        return ResponseEntity.ok(leagueService.getTeam(team));
     }
 
     @GetMapping("/standings/{leagueId}")
-    public ResponseEntity<StandingsResponse> getLeagueStandings(@PathVariable Long leagueId) {
-        return ResponseEntity.ok(sportMonksService.getStandings(leagueId));
+    public ResponseEntity<ListBaseResponse<Standings>> getLeagueStandings(@PathVariable Long leagueId) {
+        return ResponseEntity.ok(leagueService.getStandings(leagueId));
     }
 }

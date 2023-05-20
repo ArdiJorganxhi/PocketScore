@@ -43,7 +43,8 @@ public class SecurityConfiguration {
                 "/",
                 "/api/auth/**",
                 "/api/leagues/**",
-                "/api/transfers/**"
+                "/api/transfers/**",
+                "/api/players/**"
         };
     }
 }

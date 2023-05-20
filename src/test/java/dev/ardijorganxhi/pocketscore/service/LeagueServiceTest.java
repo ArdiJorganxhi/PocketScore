@@ -25,10 +25,10 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
-public class SportMonksServiceTest {
+public class LeagueServiceTest {
 
     @InjectMocks
-    private SportMonksService sportMonksService;
+    private LeagueService leagueService;
 
     @Mock
     private SportMonksClient sportMonksClient;
@@ -65,14 +65,13 @@ public class SportMonksServiceTest {
                 .build();
 
         List<Fixture> fixtures = Collections.singletonList(fixture);
-
-        ScoreResponse scoreResponse = ScoreResponse.builder()
-                .data(fixtures)
+        ListBaseResponse<Fixture> scoreResponse = ListBaseResponse.<Fixture>builder()
+                .list(fixtures)
                 .build();
 
         when(sportMonksClient.getScores()).thenReturn(scoreResponse);
 
-        ScoreResponse response = sportMonksService.getScores();
+        ListBaseResponse<Fixture> response = leagueService.getScores();
 
         assertEquals(scoreResponse, response);
         verify(sportMonksClient).getScores();
@@ -90,13 +89,13 @@ public class SportMonksServiceTest {
 
         List<Team> teams = Collections.singletonList(team);
 
-        TeamResponse teamResponse = TeamResponse.builder()
-                .team(teams)
+        ListBaseResponse<Team> teamResponse = ListBaseResponse.<Team>builder()
+                .list(teams)
                 .build();
 
         when(sportMonksClient.getTeam(teamName)).thenReturn(teamResponse);
 
-        TeamResponse response = sportMonksService.getTeam(teamName);
+        ListBaseResponse<Team> response = leagueService.getTeam(teamName);
 
         assertEquals(teamResponse, response);
         verify(sportMonksClient).getTeam(teamName);
@@ -114,76 +113,16 @@ public class SportMonksServiceTest {
 
         List<Standings> standingList = Collections.singletonList(standings);
 
-        StandingsResponse standingsResponse = StandingsResponse.builder()
-                .standings(standingList)
+        ListBaseResponse<Standings> standingsResponse = ListBaseResponse.<Standings>builder()
+                .list(standingList)
                 .build();
 
         when(sportMonksClient.getStandings(leagueId)).thenReturn(standingsResponse);
 
-        StandingsResponse response = sportMonksService.getStandings(leagueId);
+        ListBaseResponse<Standings> response = leagueService.getStandings(leagueId);
 
         assertEquals(standingsResponse, response);
         verify(sportMonksClient).getStandings(leagueId);
     }
 
-    @Test
-    public void it_should_get_transfers() {
-        Transfer transfer = Transfer.builder()
-                .id(1)
-                .build();
-
-        List<Transfer> transfers = Collections.singletonList(transfer);
-
-        ListTransferResponse transferResponse = ListTransferResponse.builder()
-                .transfers(transfers)
-                .build();
-
-        when(sportMonksClient.getAllTransfers()).thenReturn(transferResponse);
-
-        ListTransferResponse response = sportMonksService.getTransfers();
-
-        assertEquals(transferResponse, response);
-        verify(sportMonksClient).getAllTransfers();
-    }
-    @Test
-    public void it_should_get_transfer_by_id() {
-        Long transferId = 1L;
-
-        Transfer transfer = Transfer.builder()
-                .id(Math.toIntExact(transferId))
-                .build();
-
-        TransferResponse transferResponse = TransferResponse.builder()
-                .transfer(transfer)
-                .build();
-
-        when(sportMonksClient.getTransferById(transferId)).thenReturn(transferResponse);
-
-        TransferResponse response = sportMonksService.getTransferById(transferId);
-
-        assertEquals(transferResponse, response);
-        verify(sportMonksClient).getTransferById(transferId);
-
-    }
-
-    @Test
-    public void it_should_get_transfers_by_team() {
-        String teamName = "team";
-        Transfer transfer = Transfer.builder()
-                .id(1)
-                .build();
-
-        List<Transfer> transfers = Collections.singletonList(transfer);
-
-        ListTransferResponse transferResponse = ListTransferResponse.builder()
-                .transfers(transfers)
-                .build();
-
-        when(sportMonksClient.getTransferByTeams(teamName)).thenReturn(transferResponse);
-
-        ListTransferResponse response = sportMonksService.getTransferByTeam(teamName);
-
-        assertEquals(transferResponse, response);
-        verify(sportMonksClient).getTransferByTeams(teamName);
-    }
 }
