@@ -42,7 +42,9 @@ public class SecurityConfiguration {
                 "/csrf",
                 "/",
                 "/api/auth/**",
-                "/api/football/**"
+                "/api/football/**",
+                "/api/standings/**",
+                "/api/teams/**"
         };
     }
 }

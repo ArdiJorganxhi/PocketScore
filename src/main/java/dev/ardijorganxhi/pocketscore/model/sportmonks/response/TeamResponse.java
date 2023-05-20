@@ -2,26 +2,21 @@ package dev.ardijorganxhi.pocketscore.model.sportmonks.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
+import dev.ardijorganxhi.pocketscore.model.sportmonks.team.Team;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Fixture {
+public class TeamResponse {
 
-    private Integer id;
-    private String name;
-    @JsonProperty("result_info")
-    private String resultInfo;
-    @JsonProperty("scores")
-    private List<Score> scoreList;
-
-
-
-
+    @JsonProperty("data")
+    private List<Team> team;
 }

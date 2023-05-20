@@ -1,4 +1,4 @@
-package dev.ardijorganxhi.pocketscore.model.sportmonks.response;
+package dev.ardijorganxhi.pocketscore.model.sportmonks.scores;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
