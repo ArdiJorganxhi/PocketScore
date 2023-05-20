@@ -2,13 +2,11 @@ package dev.ardijorganxhi.pocketscore.model.sportmonks.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.transfers.Transfer;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
