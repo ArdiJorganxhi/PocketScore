@@ -1,2 +1,6 @@
-# PocketScore
-An API for live-tracking scores and fixtures of football with integration of SportMonks API. Powered by Java Spring Boot, PostgreSQL, SportMonks API
+# Track live scores on PocketScore
+
+PocketScore is an API for tracking live scores on football, it is powered by SportMonks API for getting live datas from different leagues. 
+
+This API includes integration of SportMonks API using FeignClient.
+
