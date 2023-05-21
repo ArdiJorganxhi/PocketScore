@@ -1,7 +1,7 @@
 package dev.ardijorganxhi.pocketscore.controller;
 
-import dev.ardijorganxhi.pocketscore.model.sportmonks.response.BaseResponse;
-import dev.ardijorganxhi.pocketscore.model.sportmonks.response.ListBaseResponse;
+import dev.ardijorganxhi.pocketscore.model.response.BaseResponse;
+import dev.ardijorganxhi.pocketscore.model.response.ListBaseResponse;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.transfers.Transfer;
 import dev.ardijorganxhi.pocketscore.service.TransferService;
 import lombok.RequiredArgsConstructor;

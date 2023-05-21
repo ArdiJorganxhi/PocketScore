@@ -1,6 +1,6 @@
 package dev.ardijorganxhi.pocketscore.controller;
 
-import dev.ardijorganxhi.pocketscore.model.sportmonks.response.ListBaseResponse;
+import dev.ardijorganxhi.pocketscore.model.response.ListBaseResponse;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.scores.Fixture;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.standings.Standings;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.team.Team;

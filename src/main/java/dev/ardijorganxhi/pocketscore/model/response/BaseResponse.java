@@ -1,10 +1,8 @@
-package dev.ardijorganxhi.pocketscore.model.sportmonks.response;
+package dev.ardijorganxhi.pocketscore.model.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-
-import java.util.List;
 
 @Getter
 @Setter
@@ -12,8 +10,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ListBaseResponse<T> {
+public class BaseResponse<T> {
 
     @JsonProperty("data")
-    private List<T> list;
+    private T response;
 }

@@ -44,7 +44,8 @@ public class SecurityConfiguration {
                 "/api/auth/**",
                 "/api/leagues/**",
                 "/api/transfers/**",
-                "/api/players/**"
+                "/api/players/**",
+                "/api/teams/**"
         };
     }
 }

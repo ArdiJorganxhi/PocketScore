@@ -1,8 +1,8 @@
 package dev.ardijorganxhi.pocketscore.service;
 
 import dev.ardijorganxhi.pocketscore.client.SportMonksClient;
-import dev.ardijorganxhi.pocketscore.model.sportmonks.response.BaseResponse;
-import dev.ardijorganxhi.pocketscore.model.sportmonks.response.ListBaseResponse;
+import dev.ardijorganxhi.pocketscore.model.response.BaseResponse;
+import dev.ardijorganxhi.pocketscore.model.response.ListBaseResponse;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.transfers.Transfer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

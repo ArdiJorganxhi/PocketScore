@@ -3,7 +3,7 @@ package dev.ardijorganxhi.pocketscore.service;
 import dev.ardijorganxhi.pocketscore.client.SportMonksClient;
 import dev.ardijorganxhi.pocketscore.entity.FavoriteTeam;
 import dev.ardijorganxhi.pocketscore.mapper.UserMapper;
-import dev.ardijorganxhi.pocketscore.model.sportmonks.response.ListBaseResponse;
+import dev.ardijorganxhi.pocketscore.model.response.ListBaseResponse;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.scores.Fixture;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.team.Team;
 import dev.ardijorganxhi.pocketscore.repository.FavoriteTeamRepository;

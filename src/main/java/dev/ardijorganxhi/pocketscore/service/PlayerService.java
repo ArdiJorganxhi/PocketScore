@@ -4,8 +4,8 @@ import dev.ardijorganxhi.pocketscore.client.SportMonksClient;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.players.Player;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.players.PlayerStats;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.players.PlayerTrophies;
-import dev.ardijorganxhi.pocketscore.model.sportmonks.response.BaseResponse;
-import dev.ardijorganxhi.pocketscore.model.sportmonks.response.ListBaseResponse;
+import dev.ardijorganxhi.pocketscore.model.response.BaseResponse;
+import dev.ardijorganxhi.pocketscore.model.response.ListBaseResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

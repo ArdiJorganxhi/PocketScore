@@ -1,18 +1,17 @@
 package dev.ardijorganxhi.pocketscore.client;
 
 
+import dev.ardijorganxhi.pocketscore.model.response.BaseResponse;
+import dev.ardijorganxhi.pocketscore.model.response.ListBaseResponse;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.players.Player;
-import dev.ardijorganxhi.pocketscore.model.sportmonks.players.PlayerStats;
-import dev.ardijorganxhi.pocketscore.model.sportmonks.response.*;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.scores.Fixture;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.standings.Standings;
+import dev.ardijorganxhi.pocketscore.model.sportmonks.team.Squads;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.team.Team;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.transfers.Transfer;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
-import java.util.List;
 
 @FeignClient(value = "sportmonksclient", url = "https://api.sportmonks.com/v3/football")
 public interface SportMonksClient {
@@ -54,5 +53,20 @@ public interface SportMonksClient {
 
     @GetMapping("/players/{playerId}?api_token=${token}&include=trophies;")
     BaseResponse<Player> getTrophiesByPlayerId(@PathVariable Long playerId);
+
+    @GetMapping("/teams?api_token=${token}")
+    ListBaseResponse<Team> getAllTeams();
+
+    @GetMapping("/teams/{teamId}?api_token=${token}")
+    BaseResponse<Team> getTeamById(@PathVariable Long teamId);
+
+    @GetMapping("/squads/teams/{teamId}?api_token=${token}")
+    ListBaseResponse<Squads> getSquadsOfTeamById(@PathVariable Long teamId);
+
+    @GetMapping("/teams/{teamId}?api_token=${token}&include=seasons;")
+    BaseResponse<Team> getSeasonsOfTeamById(@PathVariable Long teamId);
+
+    @GetMapping("/teams/{teamId}?api_token=${token}&include=rivals;")
+    BaseResponse<Team> getRivalsOfTeamById(@PathVariable Long teamId);
 
 }

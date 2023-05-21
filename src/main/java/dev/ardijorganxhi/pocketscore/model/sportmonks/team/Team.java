@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Getter
 @Setter
@@ -25,7 +26,11 @@ public class Team {
 
     private String type;
 
-    private List<Trophies> trophies;
+    private Optional<List<Trophies>> trophies;
 
-    private List<Players> players;
+    private Optional<List<Squads>> players;
+
+    private Optional<List<TeamSeasons>> seasons;
+
+    private Optional<List<Team>> rivals;
 }
