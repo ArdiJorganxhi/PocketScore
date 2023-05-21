@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
+import java.util.List;
+import java.util.Optional;
+
 @Getter
 @Setter
 @Builder
@@ -30,6 +33,12 @@ public class Player {
 
     @JsonProperty("date_of_birth")
     private String dateOfBirth;
+
+    @JsonProperty("statistics")
+    private Optional<List<PlayerStats>> statistics;
+
+    @JsonProperty("trophies")
+    private Optional<List<PlayerTrophies>> trophies;
 
 
 }

@@ -2,12 +2,15 @@ package dev.ardijorganxhi.pocketscore.controller;
 
 import dev.ardijorganxhi.pocketscore.model.sportmonks.players.Player;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.players.PlayerStats;
+import dev.ardijorganxhi.pocketscore.model.sportmonks.players.PlayerTrophies;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.response.BaseResponse;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.response.ListBaseResponse;
 import dev.ardijorganxhi.pocketscore.service.PlayerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -38,8 +41,13 @@ public class PlayerController {
     }
 
     @GetMapping("/{id}/stats")
-    public ResponseEntity<ListBaseResponse<PlayerStats>> getStatsByPlayer(@PathVariable Long id) {
+    public ResponseEntity<List<PlayerStats>> getStatsByPlayer(@PathVariable Long id) {
         return ResponseEntity.ok(playerService.getStatsByPlayer(id));
+    }
+
+    @GetMapping("/{id}/trophies")
+    public ResponseEntity<List<PlayerTrophies>> getTrophiesByPlayer(@PathVariable Long id) {
+        return ResponseEntity.ok(playerService.getTrophiesByPlayer(id));
     }
 
 }

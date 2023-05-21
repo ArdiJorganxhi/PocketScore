@@ -50,6 +50,9 @@ public interface SportMonksClient {
     ListBaseResponse<Player> getPlayerBySearch(@PathVariable String player);
 
     @GetMapping("/players/{playerId}?api_token=${token}&include=statistics;")
-    ListBaseResponse<PlayerStats> getStatsByPlayerId(@PathVariable Long playerId);
+    BaseResponse<Player> getStatsByPlayerId(@PathVariable Long playerId);
+
+    @GetMapping("/players/{playerId}?api_token=${token}&include=trophies;")
+    BaseResponse<Player> getTrophiesByPlayerId(@PathVariable Long playerId);
 
 }
