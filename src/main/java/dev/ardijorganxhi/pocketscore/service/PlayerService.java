@@ -2,6 +2,7 @@ package dev.ardijorganxhi.pocketscore.service;
 
 import dev.ardijorganxhi.pocketscore.client.SportMonksClient;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.players.Player;
+import dev.ardijorganxhi.pocketscore.model.sportmonks.players.PlayerStats;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.response.BaseResponse;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.response.ListBaseResponse;
 import lombok.RequiredArgsConstructor;
@@ -24,9 +25,12 @@ public class PlayerService {
     public ListBaseResponse<Player> getPlayersByCountryId(Long countryId) {
         return sportMonksClient.getPlayersByCountryId(countryId);
     }
-
     public ListBaseResponse<Player> getPlayerBySearch(String name) {
         return sportMonksClient.getPlayerBySearch(name);
+    }
+
+    public ListBaseResponse<PlayerStats> getStatsByPlayer(Long id) {
+        return sportMonksClient.getStatsByPlayerId(id);
     }
 
 

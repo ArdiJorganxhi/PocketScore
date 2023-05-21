@@ -2,6 +2,7 @@ package dev.ardijorganxhi.pocketscore.client;
 
 
 import dev.ardijorganxhi.pocketscore.model.sportmonks.players.Player;
+import dev.ardijorganxhi.pocketscore.model.sportmonks.players.PlayerStats;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.response.*;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.scores.Fixture;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.standings.Standings;
@@ -47,5 +48,8 @@ public interface SportMonksClient {
 
     @GetMapping("/players/search/{player}?api_token=${token}")
     ListBaseResponse<Player> getPlayerBySearch(@PathVariable String player);
+
+    @GetMapping("/players/{playerId}?api_token=${token}&include=statistics;")
+    ListBaseResponse<PlayerStats> getStatsByPlayerId(@PathVariable Long playerId);
 
 }

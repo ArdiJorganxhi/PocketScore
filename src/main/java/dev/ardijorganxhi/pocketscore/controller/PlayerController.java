@@ -1,6 +1,7 @@
 package dev.ardijorganxhi.pocketscore.controller;
 
 import dev.ardijorganxhi.pocketscore.model.sportmonks.players.Player;
+import dev.ardijorganxhi.pocketscore.model.sportmonks.players.PlayerStats;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.response.BaseResponse;
 import dev.ardijorganxhi.pocketscore.model.sportmonks.response.ListBaseResponse;
 import dev.ardijorganxhi.pocketscore.service.PlayerService;
@@ -34,6 +35,11 @@ public class PlayerController {
     @GetMapping("/search")
     public ResponseEntity<ListBaseResponse<Player>> getPlayerBySearch(@RequestParam(name = "player") String player) {
         return ResponseEntity.ok(playerService.getPlayerBySearch(player));
+    }
+
+    @GetMapping("/{id}/stats")
+    public ResponseEntity<ListBaseResponse<PlayerStats>> getStatsByPlayer(@PathVariable Long id) {
+        return ResponseEntity.ok(playerService.getStatsByPlayer(id));
     }
 
 }
