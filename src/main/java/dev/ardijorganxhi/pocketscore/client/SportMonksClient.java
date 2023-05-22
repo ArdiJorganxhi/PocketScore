@@ -69,4 +69,6 @@ public interface SportMonksClient {
     @GetMapping("/teams/{teamId}?api_token=${token}&include=rivals;")
     BaseResponse<Team> getRivalsOfTeamById(@PathVariable Long teamId);
 
+
+
 }
