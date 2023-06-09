@@ -33,8 +33,4 @@ public class TransferController {
         return ResponseEntity.ok(transferService.getTransferByTeam(team));
     }
 
-
-
-
-
 }
